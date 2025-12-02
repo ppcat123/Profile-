@@ -3,208 +3,223 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cyprus Jake Pacoy Info</title>
+<title>Cyprus Jake Pacoy – Professional Profile</title>
 
-<link href="https://cdn.leanhduc.pro.vn/font-awesome/pro-5.15.3/css/all.css" rel="stylesheet" />
+<!-- ICONS & FONTS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Lobster&display=swap" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
-
-body {
-  background:url('https://i.imgur.com/p2rtTTa.jpeg') center/cover no-repeat fixed; /* KEEP THIS IMGUR LINK */
-  overflow-x:hidden;
+*{
+  margin:0; padding:0; box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
 }
 
-#main {
-  width:450px;
-  margin:30px auto;
-  background:#ffffffc2;
-  border-radius:25px;
-  box-shadow:0 0 15px rgba(0,0,0,.5);
+body{
+  background:url('https://i.imgur.com/p2rtTTa.jpeg') center/cover no-repeat fixed;
+  transition:.4s;
+}
+body.dark-mode{
+  background:#0b0b0c;
+  color:#e8e8e8;
+}
+
+/* MAIN CARD */
+#main{
+  width:480px;
+  margin:40px auto;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(8px);
+  border-radius:28px;
+  box-shadow:0 0 22px rgba(0,0,0,.4);
   overflow:hidden;
-  animation: fadeIn 1.2s ease;
+  animation:fadeIn 1s ease;
+}
+body.dark-mode #main{
+  background:rgba(25,25,25,0.78);
+  backdrop-filter:blur(12px);
 }
 
-@keyframes fadeIn {
-  from { opacity:0; transform:translateY(20px); }
-  to { opacity:1; transform:translateY(0); }
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);}
 }
 
-#cover {
-  background:url('./image/lol.gif') center/cover; /* LOCAL */
-  padding:40px 0;
+/* TOP COVER */
+#cover{
+  background:url('./image/lol.gif') center/cover;
+  padding:45px 0;
   position:relative;
+  filter:brightness(.8);
 }
 
-#avatar img {
-  height:200px;
-  width:200px;
+#avatar img{
+  height:215px; width:215px;
   border-radius:50%;
-  border:5px solid #1877f2;
-  box-shadow:0 0 20px rgba(0,0,0,.7);
-  animation: popIn 1s ease;
+  border:6px solid #1877f2;
+  box-shadow:0 0 25px rgba(0,0,0,.7);
+  animation:popIn .9s ease;
+}
+@keyframes popIn{
+  0%{opacity:0; transform:scale(.5);} 100%{opacity:1; transform:scale(1);}
 }
 
-@keyframes popIn {
-  0% { transform:scale(.6); opacity:0; }
-  100% { transform:scale(1); opacity:1; }
-}
-
-#name {
+#name{
   text-align:center;
-  font-size:30px;
-  font-family:'Lobster';
-  margin-top:10px;
+  font-size:32px;
+  margin-top:12px;
+  font-weight:700;
 }
 
-#bio {
+#bio{
   text-align:center;
-  margin:10px 0;
-  font-size:17px;
+  font-size:18px;
+  opacity:.8;
+  margin-bottom:8px;
 }
 
-#contact-text {
+#contact-text{
   text-align:center;
   background:#2d88ff;
   display:inline-block;
-  padding:6px 18px;
+  padding:7px 20px;
   color:#fff;
   border-radius:20px;
-  margin:12px auto;
+  margin:14px auto;
   font-size:22px;
   font-family:'Lobster';
   transition:.3s;
 }
+#contact-text:hover{transform:scale(1.1);} 
 
-#contact-text:hover { transform:scale(1.15); }
-
-.box {
-  width:75%;
-  margin:10px auto;
-  padding:12px;
-  border-radius:20px;
-  display:flex;
-  align-items:center;
+/* SOCIAL BOXES */
+.box{
+  width:80%; margin:13px auto;
+  padding:14px;
+  border-radius:18px;
+  display:flex; align-items:center;
   color:#fff;
-  cursor:pointer;
-  box-shadow:0 0 12px rgba(0,0,0,.5);
+  cursor:pointer; transition:.25s;
+  box-shadow:0 0 15px rgba(0,0,0,.45);
+}
+.box:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(255,255,255,.5);
+}
+.box .icon i{font-size:26px; margin-right:12px; transition:.4s;}
+.box:hover .icon i{transform:rotate(360deg);} 
+
+.facebook{background:linear-gradient(45deg,#3a5795,#2d88ff);} 
+.tiktok{background:linear-gradient(45deg,#000,#8f0032);} 
+.instagram{background:linear-gradient(45deg,#feda75,#d62976,#962fbf,#4f5bd5);} 
+
+.detail{font-size:19px; flex:1;}
+
+/* PROFESSIONAL PROFILE CARD */
+.pro-card{
+  margin:25px auto;
+  width:85%;
+  background:rgba(255,255,255,0.92);
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 0 20px rgba(0,0,0,.3);
+}
+body.dark-mode .pro-card{
+  background:rgba(20,20,20,0.8);
+  color:#eaeaea;
+}
+.pro-title{
+  font-size:22px; font-weight:700; margin-bottom:10px;
+  color:#1f6feb;
+}
+body.dark-mode .pro-title{color:#8cb4ff;} 
+ul{margin-left:20px;}
+li{margin-bottom:6px;}
+
+/* FLOATING DARK MODE BUTTON */
+#darkToggle{
+  position:fixed;
+  bottom:22px; right:22px;
+  background:#222;
+  color:#fff;
+  padding:14px 17px;
+  font-size:20px;
+  border:none; border-radius:50%; cursor:pointer;
+  box-shadow:0 0 15px rgba(0,0,0,.4);
   transition:.3s;
 }
+#darkToggle:hover{transform:scale(1.15);} 
+body.dark-mode #darkToggle{background:#f1f1f1; color:#111;} 
 
-.box:hover {
-  transform:scale(1.05);
-  box-shadow:0 0 18px rgba(255,255,255,.7);
-}
-
-.box .icon i {
-  transition:.4s;
-}
-
-.box:hover .icon i {
-  transform:rotate(360deg);
-}
-
-.facebook {
-  background:linear-gradient(45deg,#3a5795,#2d88ff);
-}
-
-.tiktok {
-  background:linear-gradient(45deg,#000,#8f0032);
-}
-
-.instagram {
-  background:linear-gradient(45deg,#feda75,#d62976,#962fbf,#4f5bd5);
-}
-
-.detail {
-  margin-left:10px;
-  font-size:20px;
-  flex:1;
-}
-
-#counterBox {
-  text-align:center;
-  margin:15px 0;
-  font-size:18px;
-  font-weight:bold;
-  color:#333;
-}
+#counterBox{text-align:center; margin:15px 0; font-size:18px; font-weight:600;}
 </style>
 </head>
 
 <body>
 <div id="main">
-
   <div id="cover" class="text-center">
     <div id="avatar">
-      <img src="./image/avatar.jpg" alt="avatar"> <!-- LOCAL -->
+      <img src="./image/avatar.jpg" alt="avatar">
     </div>
   </div>
 
-  <p id="name">Cyprus <i class="fad fa-badge-check"></i></p>
+  <p id="name">Cyprus <i class="fa-solid fa-badge-check" style="color:#1877f2"></i></p>
   <p id="bio">⚜️ Cyprus Jake Pacoy ⚜️</p>
 
-  <div class="text-center">
-    <p id="contact-text">INFO SITE OWNER</p>
-  </div>
-
+  <div class="text-center"><p id="contact-text">INFO SITE OWNER</p></div>
   <div id="counterBox">Visitors: <span id="visitCount">0</span></div>
 
-  <!-- FACEBOOK -->
+  <!-- SOCIAL LINKS -->
   <div class="box facebook" onclick="openlink('https://www.facebook.com/100069255516638')">
       <div class="icon"><i class="fab fa-facebook"></i></div>
       <p class="detail">Facebook – cyprus jake pacoy</p>
   </div>
 
-  <!-- TIKTOK -->
   <div class="box tiktok" onclick="openlink('https://www.tiktok.com/@waifudatealive')">
       <div class="icon"><i class="fab fa-tiktok"></i></div>
       <p class="detail">TikTok – waifu🌸</p>
   </div>
 
-  <!-- INSTAGRAM -->
   <div class="box instagram" onclick="openlink('https://www.instagram.com/cyprusjakepacoy/')">
       <div class="icon"><i class="fab fa-instagram"></i></div>
       <p class="detail">Instagram – Cyprus</p>
   </div>
 
+  <!-- PROFESSIONAL PROFILE SECTION -->
+  <div class="pro-card">
+    <p class="pro-title">Professional Info</p>
+    <ul>
+      <li><strong>Age:</strong> 18 years old</li>
+      <li><strong>Oracle Certified Foundations Associate (OCFA)</strong> – Java</li>
+      <li><strong>CEPP</strong> – Python</li>
+      <li><strong>CLA</strong> – C++</li>
+      <li><strong>Certificates from W3Schools</strong></li>
+    </ul>
+
+    <p class="pro-title" style="margin-top:18px;">Habits & Interests</p>
+    <ul>
+      <li>Playing guitar</li>
+      <li>Editing</li>
+      <li>Open to learning new things</li>
+      <li>Playing games</li>
+      <li>Reading books</li>
+      <li>Solving math problems</li>
+    </ul>
+  </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<button id="darkToggle"><i class="fa-solid fa-moon"></i></button>
 
 <script>
-function openlink(url) {
-  window.open(url, '_blank');
-}
+function openlink(url){ window.open(url,'_blank'); }
 
-// VISITOR COUNTER (local only, prevents double count)
-(function(){
-  let uniqueID = localStorage.getItem("visitor_id");
+// DARK MODE TOGGLE
+window.addEventListener('DOMContentLoaded',function(){
+  const toggle=document.getElementById('darkToggle');
+  const saved=localStorage.getItem('dark');
+  if(saved==='true'){document.body.classList.add('dark-mode');}
 
-  if(!uniqueID){
-    uniqueID = "id_" + Math.random().toString(36).substr(2,9);
-    localStorage.setItem("visitor_id", uniqueID);
-
-    let count = localStorage.getItem("visitCount") || 0;
-    count++;
-    localStorage.setItem("visitCount", count);
-  }
-
-  document.getElementById("visitCount").innerText = localStorage.getItem("visitCount") || 1;
-})();
-</script>
-
-<!-- AUTO-PLAY SOUND -->
-<audio id="bgm" src="de.mp3" autoplay loop hidden></audio>
-
-<script>
-const audio = document.getElementById('bgm');
-document.addEventListener('click', ()=>{
-  audio.play().catch(()=>{});
-},{once:true});
-</script>
-
-</body>
-</html>
+  toggle.addEventListener('click',()=>{
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('dark', document.body.classList.contains('dark-mode'));
+  });
