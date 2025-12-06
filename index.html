@@ -15,17 +15,48 @@
 body{background:url('https://i.imgur.com/p2rtTTa.jpeg') center/cover no-repeat fixed;transition:.4s;}
 body.dark-mode{background:url('./image/test.jpeg') center/cover no-repeat fixed;color:#e8e8e8;}
 #particles-js{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:transparent;}
-#main{width:480px;margin:40px auto;background:rgba(255,255,255,0.85);backdrop-filter:blur(8px);border-radius:28px;box-shadow:0 0 22px rgba(0,0,0,.4);overflow:hidden;animation:fadeIn 1s ease;}
+
+#main{width:480px;margin:40px auto;background:rgba(255,255,255,0.85);backdrop-filter:blur(8px);border-radius:28px;
+box-shadow:0 0 22px rgba(0,0,0,.4);overflow:hidden;animation:fadeIn 1s ease;}
 body.dark-mode #main{background:rgba(25,25,25,0.78);backdrop-filter:blur(12px);}
+
 @keyframes fadeIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+/* COVER */
 #cover{background:url('./image/lol.gif') center/cover;padding:45px 0;position:relative;filter:brightness(.8);}
-#avatar img{height:215px;width:215px;border-radius:50%;border:6px solid #1877f2;box-shadow:0 0 25px rgba(0,0,0,.7);animation:popIn .9s ease;}
+
+/* ✔ Feature #5 – 3D Avatar Hover */
+#avatar img{
+  height:215px;width:215px;border-radius:50%;border:6px solid #1877f2;
+  box-shadow:0 0 25px rgba(0,0,0,.7);animation:popIn .9s ease;
+  transition:.3s;
+}
+#avatar img:hover{
+  transform:rotateY(10deg) rotateX(5deg) scale(1.04);
+}
+
 @keyframes popIn{0%{opacity:0;transform:scale(.5);}100%{opacity:1;transform:scale(1);}}
+
+/* NAME & BIO */
 #name{text-align:center;font-size:32px;margin-top:12px;font-weight:700;}
-#bio{text-align:center;font-size:18px;opacity:.8;margin-bottom:8px;}
-#contact-text{text-align:center;background:#2d88ff;display:inline-block;padding:7px 20px;color:#fff;border-radius:20px;margin:14px auto;font-size:22px;font-family:'Lobster';transition:.3s;}
+
+/* ✔ Feature #9 – Auto Typing Bio */
+#bio{
+  text-align:center;
+  font-size:18px;
+  opacity:.9;
+  margin-bottom:8px;
+  height:25px;
+}
+
+/* CONTACT BUTTON */
+#contact-text{text-align:center;background:#2d88ff;display:inline-block;padding:7px 20px;color:#fff;border-radius:20px;
+margin:14px auto;font-size:22px;font-family:'Lobster';transition:.3s;}
 #contact-text:hover{transform:scale(1.1);}
-.box{width:80%;margin:13px auto;padding:14px;border-radius:18px;display:flex;align-items:center;color:#fff;cursor:pointer;transition:.25s;box-shadow:0 0 15px rgba(0,0,0,.45);}
+
+/* SOCIAL BOXES */
+.box{width:80%;margin:13px auto;padding:14px;border-radius:18px;display:flex;align-items:center;color:#fff;cursor:pointer;
+transition:.25s;box-shadow:0 0 15px rgba(0,0,0,.45);}
 .box:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(255,255,255,.5);}
 .box .icon i{font-size:26px;margin-right:12px;transition:.4s;}
 .box:hover .icon i{transform:rotate(360deg);}
@@ -33,27 +64,76 @@ body.dark-mode #main{background:rgba(25,25,25,0.78);backdrop-filter:blur(12px);}
 .tiktok{background:linear-gradient(45deg,#000,#8f0032);}
 .instagram{background:linear-gradient(45deg,#feda75,#d62976,#962fbf,#4f5bd5);}
 .detail{font-size:19px;flex:1;}
-.pro-card{margin:25px auto;width:85%;background:rgba(255,255,255,0.92);border-radius:20px;padding:20px;box-shadow:0 0 20px rgba(0,0,0,.3);}
+
+/* ABOUT CARD */
+.pro-card{margin:25px auto;width:85%;background:rgba(255,255,255,0.92);border-radius:20px;padding:20px;
+box-shadow:0 0 20px rgba(0,0,0,.3);}
 body.dark-mode .pro-card{background:rgba(20,20,20,0.8);color:#eaeaea;}
 .pro-title{font-size:22px;font-weight:700;margin-bottom:10px;color:#1f6feb;}
 body.dark-mode .pro-title{color:#8cb4ff;}
 ul{margin-left:20px;} li{margin-bottom:6px;}
+
 #counterBox{text-align:center;margin:15px 0;font-size:18px;font-weight:600;}
 #darkSwitchContainer{margin:15px auto;width:85%;background:rgba(45,136,255,0.9);padding:12px;border-radius:18px;text-align:center;color:#fff;cursor:pointer;transition:.3s;}
 #darkSwitchContainer:hover{background:rgba(45,136,255,1);}
+
+/* ✔ Feature #4 – Slide-Up Animation */
+.box, .pro-card {
+  opacity:0;
+  animation:slideUp 0.7s ease forwards;
+}
+@keyframes slideUp {
+  from { opacity:0; transform:translateY(25px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ✔ Clock + Weather */
+#clockWeatherBox {
+  width: 85%;
+  margin: 15px auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,.3);
+  animation: slideUp 0.7s ease forwards;
+}
+body.dark-mode #clockWeatherBox { background: rgba(25,25,25,0.8); color: #e8e8e8; }
+#clockText { font-size: 24px; font-weight:700; }
+#weatherText { font-size:17px; opacity:.9; margin-top:4px; }
 </style>
 </head>
 <body>
+
 <div id="particles-js"></div>
+
 <div id="main">
-  <div id="cover" class="text-center"><div id="avatar"><img src="./image/avatar.jpg" alt="avatar"></div></div>
+
+  <div id="cover" class="text-center">
+    <div id="avatar"><img src="./image/avatar.jpg" alt="avatar"></div>
+  </div>
+
   <p id="name">Cyprus <i class="fa-solid fa-badge-check" style="color:#1877f2"></i></p>
-  <p id="bio">⚜️ Cyprus Jake Pacoy ⚜️</p>
+
+  <!-- AUTO TYPING BIO -->
+  <p id="bio"><span id="typeText"></span></p>
+
   <div class="text-center"><p id="contact-text">INFO SITE OWNER</p></div>
+
   <div id="counterBox">Visitors: <span id="visitCount">0</span></div>
-  <div class="box facebook" onclick="openlink('https://www.facebook.com/100069255516638')"><div class="icon"><i class="fab fa-facebook"></i></div><p class="detail">Facebook – cyprus jake pacoy</p></div>
-  <div class="box tiktok" onclick="openlink('https://www.tiktok.com/@waifudatealive')"><div class="icon"><i class="fab fa-tiktok"></i></div><p class="detail">TikTok – waifu🌸</p></div>
-  <div class="box instagram" onclick="openlink('https://www.instagram.com/cyprusjakepacoy/')"><div class="icon"><i class="fab fa-instagram"></i></div><p class="detail">Instagram – Cyprus</p></div>
+
+  <div class="box facebook" onclick="openlink('https://www.facebook.com/100069255516638')">
+    <div class="icon"><i class="fab fa-facebook"></i></div><p class="detail">Facebook – cyprus jake pacoy</p>
+  </div>
+
+  <div class="box tiktok" onclick="openlink('https://www.tiktok.com/@waifudatealive')">
+    <div class="icon"><i class="fab fa-tiktok"></i></div><p class="detail">TikTok – waifu🌸</p>
+  </div>
+
+  <div class="box instagram" onclick="openlink('https://www.instagram.com/cyprusjakepacoy/')">
+    <div class="icon"><i class="fab fa-instagram"></i></div><p class="detail">Instagram – Cyprus</p>
+  </div>
+
   <div class="pro-card">
     <p class="pro-title">Professional Info</p>
     <ul>
@@ -63,6 +143,7 @@ ul{margin-left:20px;} li{margin-bottom:6px;}
       <li><strong>CLA</strong> – C++</li>
       <li><strong>Certificates from W3Schools</strong></li>
     </ul>
+
     <p class="pro-title" style="margin-top:18px;">Habits & Interests</p>
     <ul>
       <li>Playing guitar</li>
@@ -72,12 +153,26 @@ ul{margin-left:20px;} li{margin-bottom:6px;}
       <li>Reading books</li>
       <li>Solving math problems</li>
     </ul>
-    <div id="darkSwitchContainer">Toggle Dark Mode: <input type="checkbox" id="darkSwitch" checked></div>
+
+    <div id="darkSwitchContainer">
+      Toggle Dark Mode: <input type="checkbox" id="darkSwitch" checked>
+    </div>
   </div>
+
+  <!-- Clock + Weather -->
+  <div id="clockWeatherBox">
+      <p id="clockText">--:--:--</p>
+      <p id="weatherText">Loading weather...</p>
+  </div>
+
 </div>
+
 <audio id="bgm" src="de.mp3" autoplay loop></audio>
+
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
 <script>
+// PARTICLES
 particlesJS('particles-js', {
   particles: {
     number:{value:80,density:{enable:true,value_area:900}},
@@ -95,20 +190,105 @@ particlesJS('particles-js', {
   },
   retina_detect:true
 });
+
 function openlink(url){window.open(url,'_blank');}
-(function(){let uniqueID=localStorage.getItem('visitor_id');if(!uniqueID){uniqueID='id_'+Math.random().toString(36).substr(2,9);localStorage.setItem('visitor_id',uniqueID);let count=localStorage.getItem('visitCount')||0;count++;localStorage.setItem('visitCount',count);}document.getElementById('visitCount').innerText=localStorage.getItem('visitCount')||1;})();
+
+/* VISITOR COUNTER */
+(function(){
+  let uniqueID=localStorage.getItem('visitor_id');
+  if(!uniqueID){
+    uniqueID='id_'+Math.random().toString(36).substr(2,9);
+    localStorage.setItem('visitor_id',uniqueID);
+    let count=localStorage.getItem('visitCount')||0;
+    count++;
+    localStorage.setItem('visitCount',count);
+  }
+  document.getElementById('visitCount').innerText=localStorage.getItem('visitCount')||1;
+})();
+
+/* AUDIO UNLOCK */
 const audio=document.getElementById('bgm');
 document.addEventListener('click',()=>{audio.play().catch(()=>{});},{once:true});
+
+/* DARK MODE */
 window.addEventListener('DOMContentLoaded',function(){
   const darkSwitch=document.getElementById('darkSwitch');
   const body=document.body;
   const saved=localStorage.getItem('dark');
-  if(saved==='true'){body.classList.add('dark-mode');darkSwitch.checked=true;} else {darkSwitch.checked=false;}
+
+  if(saved==='true'){body.classList.add('dark-mode');darkSwitch.checked=true;}
+  else {darkSwitch.checked=false;}
+
   darkSwitch.addEventListener('change',()=>{
     body.classList.toggle('dark-mode');
     localStorage.setItem('dark', body.classList.contains('dark-mode'));
   });
 });
+
+/* ✔ Feature #9 – Auto Typing Bio */
+const words = [
+  "⚜️ Cyprus Jake Pacoy ⚜️",
+  "Programmer",
+  "Video Editor",
+  "Guitar Player",
+  "Open to Learning New Things"
+];
+let i = 0, j = 0, deleting = false;
+
+function type() {
+  let current = words[i];
+  document.getElementById("typeText").textContent = current.substring(0, j);
+
+  if (!deleting && j < current.length) j++;
+  else if (deleting && j > 0) j--;
+  else {
+    deleting = !deleting;
+    if (!deleting) i = (i + 1) % words.length;
+  }
+  setTimeout(type, deleting ? 60 : 100);
+}
+type();
+
+/* REAL-TIME CLOCK */
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clockText").textContent =
+    now.toLocaleTimeString('en-US', { hour12: false });
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+/* WEATHER */
+function loadWeather() {
+  if (!navigator.geolocation) {
+    document.getElementById("weatherText").textContent = "Location not supported.";
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(async pos => {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+
+    try {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      const temp = data.current_weather.temperature;
+      const wind = data.current_weather.windspeed;
+
+      document.getElementById("weatherText").textContent =
+        `🌡️ ${temp}°C  |  💨 Wind: ${wind} km/h`;
+
+    } catch (e) {
+      document.getElementById("weatherText").textContent =
+        "Weather unavailable.";
+    }
+  });
+}
+
+loadWeather();
 </script>
+
 </body>
 </html>
