@@ -78,7 +78,62 @@ body.dark-mode #clockWeatherBox { background: rgba(25,25,25,0.8); color: #e8e8e8
 #clockText { font-size: 24px; font-weight:700; }
 #weatherText { font-size:17px; opacity:.9; margin-top:4px; }
 
-/* Premium Sliding Bio Panel */
+/* WEATHER LOADING SHIMMER */
+.weather-loading {
+  width: 120px;
+  height: 15px;
+  margin: 0 auto;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #ddd 0%, #f5f5f5 50%, #ddd 100%);
+  background-size: 200%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  from { background-position: -200%; }
+  to   { background-position: 200%; }
+}
+
+/* TECH STACK GRID */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+.tech-item {
+  background: rgba(0,0,0,0.05);
+  padding: 10px;
+  border-radius: 12px;
+  text-align:center;
+  font-size: 13px;
+  backdrop-filter: blur(6px);
+}
+body.dark-mode .tech-item { background: rgba(255,255,255,0.05); }
+
+/* SKILL BARS */
+.skill {
+  margin: 10px 0;
+}
+.skill-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+.skill-bar {
+  width: 100%;
+  height: 12px;
+  background: #cfcfcf;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg,#4d8bff,#1877f2);
+  transition: width 1.4s ease;
+}
+body.dark-mode .skill-bar { background: #444; }
+
+/* Sliding BIO Panel */
 #openBioBtn {position: fixed; bottom: 20px; right: 20px; padding: 14px 20px; background:#2c2cff;color:#fff;border:none;border-radius:12px;cursor:pointer;z-index:1000;box-shadow:0 0 15px rgba(100,100,255,0.5);transition:.2s;}
 #openBioBtn:hover{transform:scale(1.05);}
 #bioPanel {position: fixed; top:0; right:-440px;width:440px;height:100vh;background:rgba(20,20,24,0.95);backdrop-filter:blur(12px);padding:30px;box-shadow:-5px 0 20px rgba(0,0,0,0.5);transition:transform 0.5s ease,opacity 0.4s ease;opacity:0;transform:translateX(50px);overflow-y:auto;z-index:999;}
@@ -90,6 +145,22 @@ body.dark-mode #clockWeatherBox { background: rgba(25,25,25,0.8); color: #e8e8e8
 #closeBioBtn{position:absolute;top:15px;right:15px;font-size:22px;background:none;border:none;color:#fff;cursor:pointer;opacity:.7;transition:.2s;}
 #closeBioBtn:hover{opacity:1;}
 body.dark-mode #bioPanel{background:rgba(20,20,20,0.35);}
+
+/* TIMELINE */
+.timeline {
+  border-left: 3px solid #6a6aff;
+  margin-left: 20px;
+  padding-left: 20px;
+}
+.timeline-item {
+  margin-bottom: 18px;
+}
+.timeline-year {
+  font-weight: 700;
+  color: #9ab3ff;
+}
+.timeline-desc { opacity: .9; }
+
 </style>
 </head>
 <body>
@@ -104,13 +175,13 @@ body.dark-mode #bioPanel{background:rgba(20,20,20,0.35);}
 
   <p id="name">Cyprus <i class="fa-solid fa-badge-check" style="color:#1877f2"></i></p>
 
-  <!-- AUTO TYPING BIO -->
   <p id="bio"><span id="typeText"></span></p>
 
   <div class="text-center"><p id="contact-text">INFO SITE OWNER</p></div>
 
   <div id="counterBox">Visitors: <span id="visitCount">0</span></div>
 
+  <!-- SOCIALS -->
   <div class="box facebook" onclick="openlink('https://www.facebook.com/100069255516638')">
     <div class="icon"><i class="fab fa-facebook"></i></div><p class="detail">Facebook – cyprus jake pacoy</p>
   </div>
@@ -123,15 +194,59 @@ body.dark-mode #bioPanel{background:rgba(20,20,20,0.35);}
     <div class="icon"><i class="fab fa-instagram"></i></div><p class="detail">Instagram – Cyprus</p>
   </div>
 
+  <!-- PROFESSIONAL CARD -->
   <div class="pro-card">
     <p class="pro-title">Professional Info</p>
     <ul>
       <li><strong>Age:</strong> 18 years old</li>
-      <li><strong>Oracle Certified Foundations Associate (OCFA)</strong> – Java</li>
+      <li><strong>OCFA</strong> – Java</li>
       <li><strong>CEPP</strong> – Python</li>
       <li><strong>CLA</strong> – C++</li>
-      <li><strong>Certificates from W3Schools</strong></li>
+      <li><strong>W3Schools Certifications</strong></li>
     </ul>
+
+    <!-- TECH STACK UNDER PRO INFO -->
+    <p class="pro-title" style="margin-top:20px;">Tech Stack</p>
+    <div class="tech-grid">
+      <div class="tech-item"><i class="fa-brands fa-java"></i><br>Java</div>
+      <div class="tech-item"><i class="fa-brands fa-python"></i><br>Python</div>
+      <div class="tech-item"><i class="fa-solid fa-code"></i><br>C++</div>
+      <div class="tech-item"><i class="fa-brands fa-js"></i><br>JavaScript</div>
+      <div class="tech-item"><i class="fa-brands fa-html5"></i><br>HTML</div>
+      <div class="tech-item"><i class="fa-brands fa-github"></i><br>GitHub</div>
+      <div class="tech-item"><i class="fa-brands fa-npm"></i><br>NPM</div>
+      <div class="tech-item"><i class="fa-solid fa-terminal"></i><br>VSCode</div>
+      <div class="tech-item"><i class="fa-solid fa-database"></i><br>MySQL</div>
+      <div class="tech-item"><i class="fa-solid fa-leaf"></i><br>MongoDB</div>
+    </div>
+
+    <!-- SKILL BARS UNDER HABITS -->
+    <p class="pro-title" style="margin-top:20px;">Skill Levels</p>
+
+    <div class="skill">
+      <p class="skill-name">Java – 85%</p>
+      <div class="skill-bar"><div class="skill-fill" data-fill="85"></div></div>
+    </div>
+
+    <div class="skill">
+      <p class="skill-name">Python – 90%</p>
+      <div class="skill-bar"><div class="skill-fill" data-fill="90"></div></div>
+    </div>
+
+    <div class="skill">
+      <p class="skill-name">C++ – 80%</p>
+      <div class="skill-bar"><div class="skill-fill" data-fill="80"></div></div>
+    </div>
+
+    <div class="skill">
+      <p class="skill-name">Video Editing – 70%</p>
+      <div class="skill-bar"><div class="skill-fill" data-fill="70"></div></div>
+    </div>
+
+    <div class="skill">
+      <p class="skill-name">Guitar – 80%</p>
+      <div class="skill-bar"><div class="skill-fill" data-fill="80"></div></div>
+    </div>
 
     <p class="pro-title" style="margin-top:18px;">Habits & Interests</p>
     <ul>
@@ -146,17 +261,18 @@ body.dark-mode #bioPanel{background:rgba(20,20,20,0.35);}
     <div id="darkSwitchContainer">
       Toggle Dark Mode: <input type="checkbox" id="darkSwitch" checked>
     </div>
+
   </div>
 
-  <!-- Clock + Weather -->
+  <!-- CLOCK + WEATHER -->
   <div id="clockWeatherBox">
       <p id="clockText">--:--:--</p>
-      <p id="weatherText">Loading weather...</p>
+      <p id="weatherText"><div class="weather-loading"></div></p>
   </div>
 
 </div>
 
-<!-- BUTTON TO OPEN BIO PANEL -->
+<!-- BIO PANEL BUTTON -->
 <button id="openBioBtn">My Biography</button>
 
 <!-- SLIDING BIO PANEL -->
@@ -166,120 +282,154 @@ body.dark-mode #bioPanel{background:rgba(20,20,20,0.35);}
 
   <p class="section-title">Biography</p>
   <div class="bio-section">
-    My name is <strong>Cyprus Jake C. Pacoy</strong>, an 18-year-old creator passionate about art, technology, and personal growth.
-    I express myself through editing anime, drawing, cooking, guitar playing, and building things from scratch.<br><br>
+    My name is <strong>Cyprus Jake C. Pacoy</strong>, an 18-year-old creator passionate about art, technology, and learning.
+    I express myself through anime editing, drawing, cooking, playing guitar, and building tech projects.
     I'm currently a <strong>1st-year BS Business Marketing student</strong> with strong programming foundations.
-    I always push myself to master new skills without formal guidance. I also develop real-world projects including
-    <strong>fca-kurumi</strong> on NPM, a Messenger bot framework.
   </div>
-
-  <p class="section-title">Certifications</p>
-  <ul class="bio-section">
-    <li>Oracle Certified Foundations Associate (OCFA) – Java</li>
-    <li>CEPP – Python</li>
-    <li>CLA – C++ (W3Schools)</li>
-  </ul>
 
   <p class="section-title">Experience</p>
   <div class="bio-section">
-    • Published NPM package “fca-kurumi” used by developers<br>
-    • Built multiple self-learning projects and automation tools<br>
-    • Strong skills in Java, Python, and C++<br>
-    • Experience with marketing, systems, and tech development
+    • Published NPM package "fca-kurumi"<br>
+    • Built several offline systems & automations<br>
+    • Experience in Java, Python, C++, JS<br>
+    • Knowledge in marketing & system development
   </div>
+
+  <p class="section-title">Timeline</p>
+  <div class="bio-section timeline">
+    <div class="timeline-item">
+      <p class="timeline-year">2019</p>
+      <p class="timeline-desc">Started drawing anime</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">2021</p>
+      <p class="timeline-desc">Learned guitar</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">2023</p>
+      <p class="timeline-desc">Started programming</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">2024</p>
+      <p class="timeline-desc">Created messenger bot system "fca-kurumi"</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">2025</p>
+      <p class="timeline-desc">Created personal portfolio website</p>
+    </div>
+  </div>
+
 </div>
 
+<!-- AUDIO -->
 <audio id="bgm" src="de.mp3" autoplay loop></audio>
-
+<!-- ========== SCRIPTS ========== -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 <script>
-// PARTICLES
+// ===== PARTICLES BACKGROUND =====
 particlesJS('particles-js', {
-  particles: {number:{value:80,density:{enable:true,value_area:900}},color:{value:'#ffffff'},shape:{type:'circle'},opacity:{value:0.5,random:true},size:{value:3,random:true},line_linked:{enable:true,distance:150,color:'#ffffff',opacity:0.3,width:1},move:{enable:true,speed:2,direction:'none',out_mode:'out'}},
-  interactivity:{detect_on:'canvas',events:{onhover:{enable:true,mode:'grab'},onclick:{enable:true,mode:'push'}},modes:{grab:{distance:180,line_linked:{opacity:0.5}},push:{particles_nb:4}}},
-  retina_detect:true
+  particles: {
+    number: { value: 80, density: { enable: true, value_area: 900 } },
+    color: { value: '#ffffff' },
+    shape: { type: 'circle' },
+    opacity: { value: 0.5, random: true },
+    size: { value: 3, random: true },
+    line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.3, width: 1 },
+    move: { enable: true, speed: 2, direction: 'none', out_mode: 'out' }
+  },
+  interactivity: {
+    detect_on: 'canvas',
+    events: {
+      onhover: { enable: true, mode: 'grab' },
+      onclick: { enable: true, mode: 'push' }
+    },
+    modes: { grab: { distance: 180, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
+  },
+  retina_detect: true
 });
 
-function openlink(url){window.open(url,'_blank');}
+// ===== OPEN LINKS =====
+function openlink(url){ window.open(url,'_blank'); }
 
-/* VISITOR COUNTER */
+// ===== VISITOR COUNTER =====
 (function(){
-  let uniqueID=localStorage.getItem('visitor_id');
-  if(!uniqueID){uniqueID='id_'+Math.random().toString(36).substr(2,9);localStorage.setItem('visitor_id',uniqueID);
-  let count=localStorage.getItem('visitCount')||0;count++;localStorage.setItem('visitCount',count);}
-  document.getElementById('visitCount').innerText=localStorage.getItem('visitCount')||1;
+  let uniqueID = localStorage.getItem('visitor_id');
+  if(!uniqueID){
+    uniqueID = 'id_' + Math.random().toString(36).substr(2,9);
+    localStorage.setItem('visitor_id', uniqueID);
+    let count = localStorage.getItem('visitCount') || 0;
+    count++; localStorage.setItem('visitCount', count);
+  }
+  document.getElementById('visitCount').innerText = localStorage.getItem('visitCount') || 1;
 })();
 
-/* AUDIO UNLOCK */
-const audio=document.getElementById('bgm');
-document.addEventListener('click',()=>{audio.play().catch(()=>{});},{once:true});
+// ===== AUDIO UNLOCK =====
+const audio = document.getElementById('bgm');
+document.addEventListener('click', () => { audio.play().catch(()=>{}); }, { once:true });
 
-/* DARK MODE */
-window.addEventListener('DOMContentLoaded',function(){
-  const darkSwitch=document.getElementById('darkSwitch');
-  const body=document.body;
-  const saved=localStorage.getItem('dark');
-  if(saved==='true'){body.classList.add('dark-mode');darkSwitch.checked=true;}
-  else {darkSwitch.checked=false;}
-  darkSwitch.addEventListener('change',()=>{
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('dark', body.classList.contains('dark-mode'));
-  });
+// ===== DARK MODE =====
+const darkSwitch = document.getElementById('darkSwitch');
+const body = document.body;
+const savedDark = localStorage.getItem('dark');
+if(savedDark === 'true'){ body.classList.add('dark-mode'); darkSwitch.checked = true; }
+else { darkSwitch.checked = false; }
+darkSwitch.addEventListener('change', ()=>{
+  body.classList.toggle('dark-mode');
+  localStorage.setItem('dark', body.classList.contains('dark-mode'));
 });
 
-/* AUTO TYPING BIO */
+// ===== AUTO TYPING BIO =====
 const words = ["⚜️ Cyprus Jake Pacoy ⚜️","Programmer","Video Editor","Guitar Player","Open to Learning New Things"];
-let i = 0, j = 0, deleting = false;
-function type() {
+let i=0,j=0,deleting=false;
+function type(){
   let current = words[i];
-  document.getElementById("typeText").textContent = current.substring(0, j);
-  if (!deleting && j < current.length) j++;
-  else if (deleting && j > 0) j--;
-  else {deleting = !deleting;if (!deleting) i = (i + 1) % words.length;}
-  setTimeout(type, deleting ? 60 : 100);
+  document.getElementById("typeText").textContent = current.substring(0,j);
+  if(!deleting && j < current.length) j++;
+  else if(deleting && j>0) j--;
+  else { deleting = !deleting; if(!deleting) i=(i+1)%words.length; }
+  setTimeout(type, deleting?60:100);
 }
 type();
 
-/* CLOCK */
-function updateClock() {
+// ===== LIVE CLOCK =====
+function updateClock(){
   const now = new Date();
-  document.getElementById("clockText").textContent =
-    now.toLocaleTimeString('en-US', { hour12: false });
+  document.getElementById("clockText").textContent = now.toLocaleTimeString('en-US',{hour12:false});
 }
-setInterval(updateClock, 1000);
-updateClock();
+setInterval(updateClock,1000); updateClock();
 
-/* WEATHER */
-function loadWeather() {
-  if (!navigator.geolocation) {document.getElementById("weatherText").textContent = "Location not supported."; return;}
+// ===== WEATHER FETCH =====
+function loadWeather(){
+  if(!navigator.geolocation){ document.getElementById("weatherText").textContent="Location not supported."; return;}
   navigator.geolocation.getCurrentPosition(async pos => {
-    const lat = pos.coords.latitude;
-    const lon = pos.coords.longitude;
-    try {
+    const lat = pos.coords.latitude, lon = pos.coords.longitude;
+    try{
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
       const res = await fetch(url);
       const data = await res.json();
       const temp = data.current_weather.temperature;
       const wind = data.current_weather.windspeed;
       document.getElementById("weatherText").textContent = `🌡️ ${temp}°C  |  💨 Wind: ${wind} km/h`;
-    } catch (e) {document.getElementById("weatherText").textContent = "Weather unavailable.";}
+    }catch(e){ document.getElementById("weatherText").textContent="Weather unavailable."; }
   });
 }
 loadWeather();
 
-/* BIO PANEL OPEN/CLOSE */
+// ===== SLIDING BIO PANEL =====
 const openBtn = document.getElementById('openBioBtn');
 const bioPanel = document.getElementById('bioPanel');
 const closeBtn = document.getElementById('closeBioBtn');
 
-openBtn.addEventListener('click', ()=>{
-  bioPanel.classList.remove('closeAnim');
-  bioPanel.classList.add('open');
-});
-closeBtn.addEventListener('click', ()=>{
-  bioPanel.classList.add('closeAnim');
-  setTimeout(()=>{bioPanel.classList.remove('open');},380);
+openBtn.addEventListener('click', ()=>{ bioPanel.classList.add('open'); });
+closeBtn.addEventListener('click', ()=>{ bioPanel.classList.remove('open'); });
+
+// ===== SKILL BAR ANIMATION =====
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.skill-fill').forEach(el=>{
+    const width = el.dataset.fill;
+    setTimeout(()=>{ el.style.width = width + '%'; }, 400);
+  });
 });
 </script>
 </body>
