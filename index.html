@@ -140,8 +140,8 @@ body.dark-mode .skill-bar { background: #444; }
   right: -440px;
   width: 440px;
   height: 100vh;
-  background: rgba(255,255,255,0.95); /* Light mode background */
-  color: #111; /* Light mode text */
+  background: rgba(255,255,255,0.95); /* light mode */
+  color: #111; /* readable text in light mode */
   backdrop-filter: blur(12px);
   padding: 30px;
   box-shadow: -5px 0 20px rgba(0,0,0,0.5);
@@ -158,11 +158,6 @@ body.dark-mode .skill-bar { background: #444; }
   transform: translateX(0);
 }
 
-#bioPanel.closeAnim {
-  opacity: 0;
-  transform: translateX(50px);
-}
-
 #bioPanel h2 {
   margin-top: 0;
   font-size: 28px;
@@ -175,12 +170,13 @@ body.dark-mode .skill-bar { background: #444; }
 /* Bio sections */
 .bio-section {
   margin-top: 18px;
-  background: rgba(0,0,0,0.03); /* light gray in light mode */
+  background: rgba(0,0,0,0.03); /* light gray */
   padding: 18px;
   border-radius: 14px;
   line-height: 1.65;
   box-shadow: 0 0 12px rgba(0,0,0,0.1);
   border: 1px solid rgba(0,0,0,0.05);
+  color: inherit; /* make sure <strong> and text inherit panel color */
 }
 
 /* Section title */
